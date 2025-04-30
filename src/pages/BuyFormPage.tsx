@@ -13,6 +13,7 @@ const BuyFormPage: React.FC = () => {
     lastName: '',
     dob: '',
     address: '',
+    phone: '',
     company: ''
   });
   const [errors, setErrors] = useState({
@@ -20,6 +21,7 @@ const BuyFormPage: React.FC = () => {
     lastName: '',
     dob: '',
     address: '',
+    phone: '',
     company: ''
   });
 
@@ -29,8 +31,14 @@ const BuyFormPage: React.FC = () => {
       lastName: formData.lastName ? '' : 'Last name is required',
       dob: formData.dob ? '' : 'Date of birth is required',
       address: formData.address ? '' : 'Address is required',
+      phone: formData.phone ? '' : 'Phone number is required',
       company: formData.company ? '' : 'Please select a company'
     };
+
+    // Basic phone number validation
+    if (formData.phone && !/^\+?[0-9\s\-()]{10,15}$/.test(formData.phone)) {
+      newErrors.phone = 'Please enter a valid phone number';
+    }
 
     setErrors(newErrors);
     return !Object.values(newErrors).some(error => error);
@@ -158,6 +166,26 @@ const BuyFormPage: React.FC = () => {
                   />
                   {errors.address && (
                     <p className="text-destructive text-sm mt-1">{errors.address}</p>
+                  )}
+                </div>
+
+                <div className="mt-6">
+                  <label htmlFor="phone" className="block text-white mb-2">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="e.g. (123) 456-7890"
+                    className={`w-full px-4 py-2 bg-background border ${
+                      errors.phone ? 'border-destructive' : 'border-border'
+                    } rounded-md text-white focus:outline-none focus:ring-1 focus:ring-sky`}
+                  />
+                  {errors.phone && (
+                    <p className="text-destructive text-sm mt-1">{errors.phone}</p>
                   )}
                 </div>
 

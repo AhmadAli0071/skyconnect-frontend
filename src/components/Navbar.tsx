@@ -27,10 +27,11 @@ const Navbar = () => {
     }`}>
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center">
+          <Link to="/" className="flex flex-col items-start">
             <span className="text-2xl font-bold text-white">
               Sky<span className="text-sky glow-text">Connect</span>
             </span>
+            <span className="text-xs text-white/70 mt-1">Connecting You to the Sky — Fast. Reliable. Limitless</span>
           </Link>
 
           {/* Desktop Navigation */}

@@ -20,11 +20,14 @@ const HomePage: React.FC = () => {
               Unlimited <span className="text-sky">Internet</span> &<br />
               Premium <span className="text-sky">TV</span> Services
             </h1>
-            <p className="text-xl text-white/70 mb-8 max-w-2xl mx-auto opacity-0 animate-fade-in delay-200">
+            <p className="text-xl text-white/70 mb-4 max-w-2xl mx-auto opacity-0 animate-fade-in delay-200">
               Experience lightning-fast connection speeds, crystal-clear streaming, 
               and reliable service across 50+ cities nationwide.
             </p>
-            <div className="opacity-0 animate-fade-in delay-300">
+            <p className="text-lg text-sky/90 mb-8 max-w-2xl mx-auto opacity-0 animate-fade-in delay-300 font-medium italic">
+              Connecting You to the Sky — Fast. Reliable. Limitless
+            </p>
+            <div className="opacity-0 animate-fade-in delay-400">
               <Link 
                 to="/buy-form" 
                 className="px-6 py-3 rounded-md bg-sky text-white font-medium hover:bg-sky-dark transition-colors text-lg animate-glow"
