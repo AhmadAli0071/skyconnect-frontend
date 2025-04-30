@@ -24,8 +24,8 @@ const HomePage: React.FC = () => {
               Experience lightning-fast connection speeds, crystal-clear streaming, 
               and reliable service across 50+ cities nationwide.
             </p>
-            <p className="text-lg text-sky/90 mb-8 max-w-2xl mx-auto opacity-0 animate-fade-in delay-300 font-medium italic">
-              Connecting You to the Sky — Fast. Reliable. Limitless
+            <p className="text-lg mb-8 max-w-2xl mx-auto opacity-0 animate-fade-in delay-300 italic">
+              Connecting You to the Sky, <span className="font-semibold text-sky glow-text">Fast. Reliable. Limitless</span>
             </p>
             <div className="opacity-0 animate-fade-in delay-400">
               <Link 

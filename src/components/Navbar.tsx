@@ -31,7 +31,9 @@ const Navbar = () => {
             <span className="text-2xl font-bold text-white">
               Sky<span className="text-sky glow-text">Connect</span>
             </span>
-            <span className="text-xs text-white/70 mt-1">Connecting You to the Sky — Fast. Reliable. Limitless</span>
+            <span className="text-xs text-white/70 mt-1 italic">
+              Connecting You to the Sky, <span className="font-medium text-sky/90">Fast. Reliable. Limitless</span>
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -39,7 +41,6 @@ const Navbar = () => {
             <Link to="/" className="text-white/80 hover:text-white transition-colors">Home</Link>
             <a href="/#services" className="text-white/80 hover:text-white transition-colors">Services</a>
             <a href="/#packages" className="text-white/80 hover:text-white transition-colors">Packages</a>
-            <Link to="/all-packages" className="text-white/80 hover:text-white transition-colors">All Packages</Link>
             <Link to="/buy-form" className="px-4 py-2 rounded-md bg-sky text-white font-medium hover:bg-sky-dark transition-colors animate-glow">
               Buy Internet & TV
             </Link>
@@ -85,13 +86,6 @@ const Navbar = () => {
               >
                 Packages
               </a>
-              <Link 
-                to="/all-packages" 
-                className="text-white/80 hover:text-white transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                All Packages
-              </Link>
               <Link 
                 to="/buy-form" 
                 className="px-4 py-2 rounded-md bg-sky text-white font-medium hover:bg-sky-dark transition-colors text-center animate-glow"
