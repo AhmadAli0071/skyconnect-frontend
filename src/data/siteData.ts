@@ -48,8 +48,7 @@ export const companies: CompanyType[] = [
   { id: 29, name: "Grande Communications" },
   { id: 30, name: "Sonic" }
 ];
-
-// List of available packages
+// List of available packages with updated pricing
 export const packages: PackageType[] = [
   {
     id: 1,
@@ -57,7 +56,7 @@ export const packages: PackageType[] = [
     company: "Xfinity",
     internetSpeed: "1 Gbps",
     tvChannels: 250,
-    price: 129.99,
+    price: 97.85,
     popular: true,
     features: ["Unlimited Data", "WiFi 6 Router", "DVR Included", "Sports Channels"]
   },
@@ -67,7 +66,7 @@ export const packages: PackageType[] = [
     company: "Spectrum",
     internetSpeed: "500 Mbps",
     tvChannels: 175,
-    price: 99.99,
+    price: 49.99,
     features: ["No Contracts", "Free Installation", "HD Channels", "Mobile App"]
   },
   {
@@ -76,7 +75,7 @@ export const packages: PackageType[] = [
     company: "AT&T",
     internetSpeed: "940 Mbps",
     tvChannels: 200,
-    price: 119.99,
+    price: 91.25,
     features: ["Fiber Connection", "Cloud DVR", "Premium Channels", "No Data Caps"]
   },
   {
@@ -85,7 +84,7 @@ export const packages: PackageType[] = [
     company: "Cox",
     internetSpeed: "150 Mbps",
     tvChannels: 75,
-    price: 69.99,
+    price: 34.49,
     features: ["Essential Channels", "WiFi Hotspots", "Parental Controls", "Budget Friendly"]
   },
   {
@@ -94,7 +93,7 @@ export const packages: PackageType[] = [
     company: "Verizon",
     internetSpeed: "300 Mbps",
     tvChannels: 125,
-    price: 89.99,
+    price: 42.85,
     popular: true,
     features: ["Disney+ Included", "Netflix Credit", "Smart Home Compatible", "Mobile Priority"]
   },
@@ -104,7 +103,7 @@ export const packages: PackageType[] = [
     company: "Optimum",
     internetSpeed: "400 Mbps",
     tvChannels: 220,
-    price: 109.99,
+    price: 54.95,
     features: ["Premium Router", "4K Channels", "Voice Remote", "Multi-Room DVR"]
   },
   {
@@ -113,7 +112,7 @@ export const packages: PackageType[] = [
     company: "Google Fiber",
     internetSpeed: "2 Gbps",
     tvChannels: 150,
-    price: 149.99,
+    price: 96.99,
     features: ["Lowest Latency", "Game Streaming", "Gaming Router", "Priority Support"]
   },
   {
@@ -122,7 +121,7 @@ export const packages: PackageType[] = [
     company: "CenturyLink",
     internetSpeed: "200 Mbps",
     tvChannels: 190,
-    price: 94.99,
+    price: 38.45,
     features: ["Movie Channels", "Live Sports", "Streaming Integration", "Multi-Device"]
   },
   {
@@ -131,7 +130,7 @@ export const packages: PackageType[] = [
     company: "Windstream",
     internetSpeed: "100 Mbps",
     tvChannels: 60,
-    price: 59.99,
+    price: 33.32,
     features: ["Basic Channels", "Affordable", "No Contract", "Self-Install"]
   },
   {
@@ -140,7 +139,7 @@ export const packages: PackageType[] = [
     company: "Mediacom",
     internetSpeed: "300 Mbps",
     tvChannels: 170,
-    price: 99.99,
+    price: 44.29,
     features: ["Kid-Friendly Channels", "Parental Controls", "Multi-Room", "Family Discount"]
   },
   {
@@ -149,7 +148,7 @@ export const packages: PackageType[] = [
     company: "Sparklight",
     internetSpeed: "750 Mbps",
     tvChannels: 100,
-    price: 129.99,
+    price: 76.50,
     features: ["Business Support", "Static IP", "Conference Channels", "Priority Service"]
   },
   {
@@ -158,7 +157,7 @@ export const packages: PackageType[] = [
     company: "HughesNet",
     internetSpeed: "25 Mbps",
     tvChannels: 50,
-    price: 79.99,
+    price: 36.25,
     features: ["Rural Coverage", "Satellite Service", "Available Everywhere", "Data Tokens"]
   },
   {
@@ -167,7 +166,7 @@ export const packages: PackageType[] = [
     company: "RCN",
     internetSpeed: "250 Mbps",
     tvChannels: 80,
-    price: 69.99,
+    price: 39.75,
     features: ["Student Discount", "9-Month Contracts", "Easy Setup", "Educational Channels"]
   },
   {
@@ -176,7 +175,7 @@ export const packages: PackageType[] = [
     company: "Frontier",
     internetSpeed: "200 Mbps",
     tvChannels: 110,
-    price: 74.99,
+    price: 41.00,
     features: ["Senior Discount", "Large Font Guide", "Phone Support", "Classic Channels"]
   },
   {
@@ -185,7 +184,7 @@ export const packages: PackageType[] = [
     company: "DirecTV",
     internetSpeed: "400 Mbps",
     tvChannels: 230,
-    price: 119.99,
+    price: 59.50,
     features: ["All Sports Channels", "NFL Sunday Ticket", "ESPN+", "Sports Stats"]
   },
   {
@@ -194,7 +193,7 @@ export const packages: PackageType[] = [
     company: "Dish",
     internetSpeed: "300 Mbps",
     tvChannels: 190,
-    price: 104.99,
+    price: 48.95,
     features: ["Premium Movie Channels", "On-Demand Library", "4K Content", "Home Theater Integration"]
   },
   {
@@ -203,7 +202,7 @@ export const packages: PackageType[] = [
     company: "AT&T",
     internetSpeed: "500 Mbps",
     tvChannels: 155,
-    price: 109.99,
+    price: 55.00,
     features: ["Smart Home Hub", "Device Integration", "Voice Control", "Security Features"]
   },
   {
@@ -212,7 +211,7 @@ export const packages: PackageType[] = [
     company: "Ziply Fiber",
     internetSpeed: "1 Gbps",
     tvChannels: 180,
-    price: 124.99,
+    price: 97.85,
     features: ["Symmetrical Speed", "Low Latency", "Premium TV App", "Cloud Storage"]
   },
   {
@@ -221,7 +220,7 @@ export const packages: PackageType[] = [
     company: "Xfinity",
     internetSpeed: "1.2 Gbps",
     tvChannels: 140,
-    price: 134.99,
+    price: 95.35,
     features: ["Gaming Mode", "Twitch Integration", "Discord Perks", "Game Server Priority"]
   },
   {
@@ -230,7 +229,7 @@ export const packages: PackageType[] = [
     company: "Spectrum",
     internetSpeed: "600 Mbps",
     tvChannels: 125,
-    price: 114.99,
+    price: 66.29,
     features: ["Business Class Reliability", "Video Conference Priority", "Security Suite", "Tech Support"]
   },
   {
@@ -239,7 +238,7 @@ export const packages: PackageType[] = [
     company: "WOW!",
     internetSpeed: "100 Mbps",
     tvChannels: 70,
-    price: 64.99,
+    price: 33.99,
     features: ["Affordable", "Essential Channels", "No Contract", "Easy Setup"]
   },
   {
@@ -248,7 +247,7 @@ export const packages: PackageType[] = [
     company: "Verizon",
     internetSpeed: "940 Mbps",
     tvChannels: 250,
-    price: 139.99,
+    price: 94.99,
     features: ["4K Ultra HD", "Premium Sound", "Voice Remote", "Multi-Room Viewing"]
   },
   {
@@ -257,7 +256,7 @@ export const packages: PackageType[] = [
     company: "Cox",
     internetSpeed: "300 Mbps",
     tvChannels: 190,
-    price: 99.99,
+    price: 47.25,
     features: ["Spanish Channels", "International Sports", "Cultural Programming", "Bilingual Support"]
   },
   {
@@ -266,7 +265,7 @@ export const packages: PackageType[] = [
     company: "Starry Internet",
     internetSpeed: "500 Mbps",
     tvChannels: 50,
-    price: 79.99,
+    price: 51.15,
     features: ["Streaming Optimized", "Smart TV Integration", "App-Based", "No Equipment Fees"]
   },
   {
@@ -275,7 +274,7 @@ export const packages: PackageType[] = [
     company: "Optimum",
     internetSpeed: "300 Mbps",
     tvChannels: 200,
-    price: 109.99,
+    price: 46.80,
     features: ["International Channels", "Multi-Language Support", "Global Content", "World Sports"]
   },
   {
@@ -284,7 +283,7 @@ export const packages: PackageType[] = [
     company: "MetroNet",
     internetSpeed: "1 Gbps",
     tvChannels: 120,
-    price: 119.99,
+    price: 96.75,
     features: ["City Coverage", "Apartment Ready", "No Installation Fee", "Urban Areas"]
   },
   {
@@ -293,7 +292,7 @@ export const packages: PackageType[] = [
     company: "Rise Broadband",
     internetSpeed: "50 Mbps",
     tvChannels: 80,
-    price: 84.99,
+    price: 34.25,
     features: ["Rural Coverage", "Fixed Wireless", "Local Channels", "Weather Resistant"]
   },
   {
@@ -302,7 +301,7 @@ export const packages: PackageType[] = [
     company: "TDS",
     internetSpeed: "600 Mbps",
     tvChannels: 175,
-    price: 119.99,
+    price: 61.25,
     features: ["4K Channels", "Premium Content", "Voice Remote", "Advanced DVR"]
   },
   {
@@ -311,7 +310,7 @@ export const packages: PackageType[] = [
     company: "EarthLink",
     internetSpeed: "75 Mbps",
     tvChannels: 45,
-    price: 54.99,
+    price: 33.45,
     features: ["Reliable", "Basic Channels", "No Frills", "Low Cost"]
   },
   {
@@ -320,7 +319,9 @@ export const packages: PackageType[] = [
     company: "Sonic",
     internetSpeed: "1 Gbps",
     tvChannels: 275,
-    price: 149.99,
+    price: 97.85,
     features: ["All Premium Channels", "Equipment Included", "Unlimited Everything", "VIP Support"]
   }
 ];
+
+
