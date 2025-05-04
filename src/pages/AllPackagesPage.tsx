@@ -38,7 +38,7 @@ const AllPackagesPage: React.FC = () => {
                 All Available Packages
               </h1>
               <p className="text-white/70 max-w-2xl mx-auto">
-                Browse all of our internet and TV packages to find the perfect option for your needs.
+                Browse all of our internet and TV packages to find the perfect option for your needs
               </p>
             </div>
 
