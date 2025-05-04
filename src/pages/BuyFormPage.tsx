@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { companies } from '../data/siteData';
 import { useToast } from '@/hooks/use-toast';
+import axiosInstance from "@/configs/axios.js"
 
 const BuyFormPage: React.FC = () => {
   const navigate = useNavigate();
@@ -10,17 +11,17 @@ const BuyFormPage: React.FC = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
-    dob: '',
+    dateOfBirth: '',
     address: '',
-    phone: '',
+    phoneNumber: '',
     company: ''
   });
   const [errors, setErrors] = useState({
     firstName: '',
     lastName: '',
-    dob: '',
+    dateOfBirth: '',
     address: '',
-    phone: '',
+    phoneNumber: '',
     company: ''
   });
 
@@ -28,14 +29,14 @@ const BuyFormPage: React.FC = () => {
     const newErrors = {
       firstName: formData.firstName ? '' : 'First name is required',
       lastName: formData.lastName ? '' : 'Last name is required',
-      dob: formData.dob ? '' : 'Date of birth is required',
+      dateOfBirth: formData.dateOfBirth ? '' : 'Date of birth is required',
       address: formData.address ? '' : 'Address is required',
-      phone: formData.phone ? '' : 'Phone number is required',
+      phoneNumber: formData.phoneNumber ? '' : 'phoneNumber number is required',
       company: formData.company ? '' : 'Please select a company'
     };
 
-    if (formData.phone && !/^\+?[0-9\s\-()]{10,15}$/.test(formData.phone)) {
-      newErrors.phone = 'Please enter a valid phone number';
+    if (formData.phoneNumber && !/^\+?[0-9\s\-()]{10,15}$/.test(formData.phoneNumber)) {
+      newErrors.phoneNumber = 'Please enter a valid phoneNumber number';
     }
 
     setErrors(newErrors);
@@ -62,34 +63,29 @@ const BuyFormPage: React.FC = () => {
 
     if (validateForm()) {
       try {
-        const response = await fetch(`http://localhost:5000/api/inquiries`, {
-
-
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
-        });
-
-        if (!response.ok) {
-          throw new Error('Failed to submit form');
-        }
-
+        const response = await axiosInstance.post('/api/company', formData);
+  
         toast({
           title: 'Thank you!',
-          description: "Your inquiry has been submitted successfully. We'll contact you shortly.",
+          description: `Your company has been registered. We'll contact you shortly.`,
         });
-
+  
         setTimeout(() => {
           navigate('/');
         }, 1500);
-      } catch (error) {
+      } catch (error: any) {
+        console.error(error);
+  
+        // Check if backend error exists
+        const errorMessage =
+          error.response?.data?.message ||
+          error.response?.data?.error ||
+          'There was a problem submitting the form. Please try again later.';
+  
         toast({
           title: 'Error',
-          description: 'There was a problem submitting the form. Please try again later.',
+          description: errorMessage,
         });
-        console.error(error);
       }
     }
   };
@@ -151,21 +147,21 @@ const BuyFormPage: React.FC = () => {
                 </div>
 
                 <div className="mt-6">
-                  <label htmlFor="dob" className="block text-white mb-2">
+                  <label htmlFor="dateOfBirth" className="block text-white mb-2">
                     Date of Birth
                   </label>
                   <input
                     type="date"
-                    id="dob"
-                    name="dob"
-                    value={formData.dob}
+                    id="dateOfBirth"
+                    name="dateOfBirth"
+                    value={formData.dateOfBirth}
                     onChange={handleChange}
                     className={`w-full px-4 py-2 bg-background border ${
-                      errors.dob ? 'border-destructive' : 'border-border'
+                      errors.dateOfBirth ? 'border-destructive' : 'border-border'
                     } rounded-md text-white focus:outline-none focus:ring-1 focus:ring-sky`}
                   />
-                  {errors.dob && (
-                    <p className="text-destructive text-sm mt-1">{errors.dob}</p>
+                  {errors.dateOfBirth && (
+                    <p className="text-destructive text-sm mt-1">{errors.dateOfBirth}</p>
                   )}
                 </div>
 
@@ -189,22 +185,22 @@ const BuyFormPage: React.FC = () => {
                 </div>
 
                 <div className="mt-6">
-                  <label htmlFor="phone" className="block text-white mb-2">
-                    Phone Number
+                  <label htmlFor="phoneNumber" className="block text-white mb-2">
+                    phoneNumber Number
                   </label>
                   <input
                     type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
                     onChange={handleChange}
                     placeholder="e.g. (123) 456-7890"
                     className={`w-full px-4 py-2 bg-background border ${
-                      errors.phone ? 'border-destructive' : 'border-border'
+                      errors.phoneNumber ? 'border-destructive' : 'border-border'
                     } rounded-md text-white focus:outline-none focus:ring-1 focus:ring-sky`}
                   />
-                  {errors.phone && (
-                    <p className="text-destructive text-sm mt-1">{errors.phone}</p>
+                  {errors.phoneNumber && (
+                    <p className="text-destructive text-sm mt-1">{errors.phoneNumber}</p>
                   )}
                 </div>
 

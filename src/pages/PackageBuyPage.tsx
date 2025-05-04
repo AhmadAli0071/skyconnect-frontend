@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { packages } from '../data/siteData';
 import { useToast } from '@/hooks/use-toast';
+import axiosInstance from "../configs/axios.js"
 
 const PackageBuyPage: React.FC = () => {
   const navigate = useNavigate();
@@ -13,16 +14,16 @@ const PackageBuyPage: React.FC = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
-    dob: '',
+    dateOfBirth: '',
     address: '',
     mobileNumber: '',
-    packageInfo: selectedPackage
+    packageDetails: selectedPackage
   });
 
   const [errors, setErrors] = useState({
     firstName: '',
     lastName: '',
-    dob: '',
+    dateOfBirth: '',
     address: '',
     mobileNumber: ''
   });
@@ -32,7 +33,7 @@ const PackageBuyPage: React.FC = () => {
       const foundPackage = packages.find(pkg => pkg.id === parseInt(id));
       if (foundPackage) {
         setSelectedPackage(foundPackage);
-        setFormData(prev => ({ ...prev, packageInfo: foundPackage }));
+        setFormData(prev => ({ ...prev, packageDetails: foundPackage }));
       } else {
         navigate('/not-found');
       }
@@ -43,12 +44,12 @@ const PackageBuyPage: React.FC = () => {
     const newErrors = {
       firstName: formData.firstName ? '' : 'First name is required',
       lastName: formData.lastName ? '' : 'Last name is required',
-      dob: formData.dob ? '' : 'Date of birth is required',
+      dateOfBirth: formData.dateOfBirth ? '' : 'Date of birth is required',
       address: formData.address ? '' : 'Address is required',
       mobileNumber: formData.mobileNumber ? '' : 'Mobile number is required'
     };
 
-    if (formData.mobileNumber && !/^\d{10}$/.test(formData.mobileNumber)) {
+    if (formData.mobileNumber && !/^\d{11}$/.test(formData.mobileNumber)) {
       newErrors.mobileNumber = 'Please enter a valid 10-digit mobile number';
     }
 
@@ -70,38 +71,43 @@ const PackageBuyPage: React.FC = () => {
       });
     }
   };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+    const payload = {
+      ...formData,
+      packageDetails: {
+        packageName: formData.packageDetails.name,
+        internetSpeed: formData.packageDetails.internetSpeed,
+        companyName: formData.packageDetails.company,
+        price: formData.packageDetails.price,
+        channels: formData.packageDetails.features,
+      },
+    };
+  
     if (validateForm()) {
       try {
-        const response = await fetch(`http://localhost:5000/api/packageBuys`, {
-
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
-        });
-
-        if (!response.ok) {
-          throw new Error('Failed to submit form');
-        }
-
+        const response = await axiosInstance.post('/api/packages', payload);
+  
         toast({
-          title: "Thank you!",
+          title: 'Thank you!',
           description: `Your order for ${selectedPackage.name} has been placed successfully. We'll contact you shortly.`,
         });
-
+  
         setTimeout(() => {
           navigate('/');
         }, 1500);
-      } catch (error) {
+      } catch (error: any) {
         console.error(error);
+  
+        // Check if backend error exists
+        const errorMessage =
+          error.response?.data?.message ||
+          error.response?.data?.error ||
+          'There was a problem submitting the form. Please try again later.';
+  
         toast({
           title: 'Error',
-          description: 'There was a problem submitting the form. Please try again later.',
+          description: errorMessage,
         });
       }
     }
@@ -167,21 +173,21 @@ const PackageBuyPage: React.FC = () => {
                 </div>
 
                 <div className="mt-6">
-                  <label htmlFor="dob" className="block text-white mb-2">
+                  <label htmlFor="dateOfBirth" className="block text-white mb-2">
                     Date of Birth
                   </label>
                   <input
                     type="date"
-                    id="dob"
-                    name="dob"
-                    value={formData.dob}
+                    id="dateOfBirth"
+                    name="dateOfBirth"
+                    value={formData.dateOfBirth}
                     onChange={handleChange}
                     className={`w-full px-4 py-2 bg-background border ${
-                      errors.dob ? 'border-destructive' : 'border-border'
+                      errors.dateOfBirth ? 'border-destructive' : 'border-border'
                     } rounded-md text-white focus:outline-none focus:ring-1 focus:ring-sky`}
                   />
-                  {errors.dob && (
-                    <p className="text-destructive text-sm mt-1">{errors.dob}</p>
+                  {errors.dateOfBirth && (
+                    <p className="text-destructive text-sm mt-1">{errors.dateOfBirth}</p>
                   )}
                 </div>
 
