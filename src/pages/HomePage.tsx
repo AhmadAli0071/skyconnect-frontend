@@ -137,7 +137,11 @@ const HomePage: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {packages.slice(0, 6).map((pkg, index) => (
-              <PackageCard key={pkg.id} packageData={pkg} delay={(index + 1) * 100} />
+              <PackageCard 
+                key={pkg.id} 
+                packageData={pkg} 
+                delay={(index + 1) * 100}
+              />
             ))}
           </div>
           

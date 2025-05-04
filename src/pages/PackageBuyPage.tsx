@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Layout from '../components/Layout';
@@ -16,7 +15,8 @@ const PackageBuyPage: React.FC = () => {
     lastName: '',
     dob: '',
     address: '',
-    mobileNumber: ''
+    mobileNumber: '',
+    packageInfo: selectedPackage
   });
 
   const [errors, setErrors] = useState({
@@ -32,6 +32,7 @@ const PackageBuyPage: React.FC = () => {
       const foundPackage = packages.find(pkg => pkg.id === parseInt(id));
       if (foundPackage) {
         setSelectedPackage(foundPackage);
+        setFormData(prev => ({ ...prev, packageInfo: foundPackage }));
       } else {
         navigate('/not-found');
       }
@@ -47,7 +48,6 @@ const PackageBuyPage: React.FC = () => {
       mobileNumber: formData.mobileNumber ? '' : 'Mobile number is required'
     };
 
-    // Additional validation for mobile number
     if (formData.mobileNumber && !/^\d{10}$/.test(formData.mobileNumber)) {
       newErrors.mobileNumber = 'Please enter a valid 10-digit mobile number';
     }
@@ -62,8 +62,7 @@ const PackageBuyPage: React.FC = () => {
       ...formData,
       [name]: value
     });
-    
-    // Clear error when user types
+
     if (errors[name as keyof typeof errors]) {
       setErrors({
         ...errors,
@@ -72,18 +71,39 @@ const PackageBuyPage: React.FC = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (validateForm()) {
-      toast({
-        title: "Thank you!",
-        description: `Your order for ${selectedPackage.name} has been placed successfully. We'll contact you shortly.`,
-      });
-      
-      setTimeout(() => {
-        navigate('/');
-      }, 1500);
+      try {
+        const response = await fetch(`http://localhost:5000/api/packageBuys`, {
+
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to submit form');
+        }
+
+        toast({
+          title: "Thank you!",
+          description: `Your order for ${selectedPackage.name} has been placed successfully. We'll contact you shortly.`,
+        });
+
+        setTimeout(() => {
+          navigate('/');
+        }, 1500);
+      } catch (error) {
+        console.error(error);
+        toast({
+          title: 'Error',
+          description: 'There was a problem submitting the form. Please try again later.',
+        });
+      }
     }
   };
 

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
@@ -35,7 +34,6 @@ const BuyFormPage: React.FC = () => {
       company: formData.company ? '' : 'Please select a company'
     };
 
-    // Basic phone number validation
     if (formData.phone && !/^\+?[0-9\s\-()]{10,15}$/.test(formData.phone)) {
       newErrors.phone = 'Please enter a valid phone number';
     }
@@ -50,8 +48,7 @@ const BuyFormPage: React.FC = () => {
       ...formData,
       [name]: value
     });
-    
-    // Clear error when user types
+
     if (errors[name as keyof typeof errors]) {
       setErrors({
         ...errors,
@@ -60,18 +57,40 @@ const BuyFormPage: React.FC = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (validateForm()) {
-      toast({
-        title: "Thank you!",
-        description: "Your inquiry has been submitted successfully. We'll contact you shortly.",
-      });
-      
-      setTimeout(() => {
-        navigate('/');
-      }, 1500);
+      try {
+        const response = await fetch(`http://localhost:5000/api/inquiries`, {
+
+
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to submit form');
+        }
+
+        toast({
+          title: 'Thank you!',
+          description: "Your inquiry has been submitted successfully. We'll contact you shortly.",
+        });
+
+        setTimeout(() => {
+          navigate('/');
+        }, 1500);
+      } catch (error) {
+        toast({
+          title: 'Error',
+          description: 'There was a problem submitting the form. Please try again later.',
+        });
+        console.error(error);
+      }
     }
   };
 
