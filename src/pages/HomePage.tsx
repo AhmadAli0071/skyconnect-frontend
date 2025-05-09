@@ -11,40 +11,67 @@ import { Wifi, Tv, Phone, Package, Users } from 'lucide-react';
 const HomePage: React.FC = () => {
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 md:pt-32 md:pb-24 px-4 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-sky/5 via-transparent to-background z-[-1]"></div>
-        <div className="container mx-auto">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white glow-text opacity-0 animate-fade-in">
-              Unlimited <span className="text-sky">Internet</span> &<br />
-              Premium <span className="text-sky">TV</span> Services
-            </h1>
-            <p className="text-xl text-white/70 mb-4 max-w-2xl mx-auto opacity-0 animate-fade-in delay-200">
-              Experience lightning-fast connection speeds, crystal-clear streaming, 
-              and reliable service across 50+ cities nationwide.
-            </p>
-            <p className="text-lg mb-8 max-w-2xl mx-auto opacity-0 animate-fade-in delay-300 italic">
-              Connecting You to the Sky, <span className="font-semibold text-sky glow-text">Fast. Reliable. Limitless</span>
-            </p>
-            <div className="opacity-0 animate-fade-in delay-400">
-              <Link 
-                to="/buy-form" 
-                className="px-6 py-3 rounded-md bg-sky text-white font-medium hover:bg-sky-dark transition-colors text-lg animate-glow"
-              >
-                Buy Internet & TV
-              </Link>
-            </div>
-          </div>
-        </div>
-        
-        {/* Wave decoration */}
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-          <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-12 md:h-16">
-            <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" fill="currentColor" className="text-background"></path>
-          </svg>
-        </div>
-      </section>
+     {/* Hero Section */}
+<section className="pt-24 pb-16 md:pt-32 md:pb-24 px-4 relative">
+  <div className="absolute inset-0 bg-gradient-to-b from-sky/5 via-transparent to-background z-[-1]"></div>
+  <div className="container mx-auto">
+    <div className="max-w-4xl mx-auto text-center">
+      <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white glow-text opacity-0 animate-fade-in">
+        Unlimited <span className="text-sky">Internet</span> &<br />
+        Premium <span className="text-sky">TV</span> Services
+      </h1>
+      <p className="text-xl text-white/70 mb-4 max-w-2xl mx-auto opacity-0 animate-fade-in delay-200">
+        Experience lightning-fast connection speeds, crystal-clear streaming, 
+        and reliable service across 50+ cities nationwide.
+      </p>
+
+     {/* Phone Numbers */}
+<div className="max-w-md mx-auto mb-6 opacity-0 animate-fade-in delay-300">
+  <div className="rounded-xl border border-sky bg-white/5 p-4 backdrop-blur shadow-lg transition-all hover:shadow-sky/30">
+    <h3 className="text-white text-lg font-bold mb-2">📞 Call Us Anytime</h3>
+    <div className="space-y-2 text-white text-base font-medium">
+      <p>
+        <a
+          href="tel:+18186600126"
+          className="hover:text-sky transition-colors duration-200 block"
+        >
+          +1 (818) 660-0126
+        </a>
+      </p>
+      <p>
+        <a
+          href="tel:+19525920128"
+          className="hover:text-sky transition-colors duration-200 block"
+        >
+          +1 (952) 592-0128
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
+
+
+      <p className="text-lg mb-8 max-w-2xl mx-auto opacity-0 animate-fade-in delay-300 italic">
+        Connecting You to the Sky, <span className="font-semibold text-sky glow-text">Fast. Reliable. Limitless</span>
+      </p>
+      <div className="opacity-0 animate-fade-in delay-400">
+        <Link 
+          to="/buy-form" 
+          className="px-6 py-3 rounded-md bg-sky text-white font-medium hover:bg-sky-dark transition-colors text-lg animate-glow"
+        >
+          Buy Internet & TV
+        </Link>
+      </div>
+    </div>
+  </div>
+
+  {/* Wave decoration */}
+  <div className="absolute bottom-0 left-0 w-full overflow-hidden">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-12 md:h-16">
+      <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" fill="currentColor" className="text-background"></path>
+    </svg>
+  </div>
+</section>
 
       {/* Services Section */}
       <section id="services" className="py-16 px-4">
