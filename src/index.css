@@ -7,32 +7,32 @@
 
 @layer base {
   :root {
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 100%;
+    --foreground: 222 84% 4.9%;
 
-    --card: 222 47% 14%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 84% 4.9%;
 
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 84% 4.9%;
 
     --primary: 196 100% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 54% 46%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 84% 4.9%;
 
-    --muted: 217 33% 20%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 20% 35%;
 
     --accent: 196 100% 50%;
-    --accent-foreground: 210 40% 98%;
+    --accent-foreground: 222 84% 4.9%;
 
     --destructive: 0 85% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217 33% 20%;
-    --input: 217 33% 20%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
     --ring: 196 100% 50%;
 
     --radius: 0.5rem;
@@ -56,171 +56,52 @@
 
 @layer components {
   .glow-text {
-    text-shadow: 0 0 5px rgba(0, 191, 255, 0.7), 0 0 10px rgba(0, 191, 255, 0.5);
+    text-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
   }
   
   .glow-border {
-    box-shadow: 0 0 5px rgba(0, 191, 255, 0.7), 0 0 10px rgba(0, 191, 255, 0.5);
+    box-shadow: 0 0 5px rgba(0, 191, 255, 0.3), 0 0 10px rgba(0, 191, 255, 0.2);
   }
   
   .glass-card {
-    @apply bg-card border border-sky/10 backdrop-blur-md;
-    box-shadow: 0 8px 32px rgba(0, 191, 255, 0.1);
+    @apply bg-white/80 border border-sky/20 backdrop-blur-sm shadow-lg;
   }
 
   .service-card {
-    @apply glass-card rounded-xl p-6 transition-all duration-300 hover:translate-y-[-4px] hover:border-sky;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    @apply glass-card rounded-xl p-6 transition-all duration-300 hover:translate-y-[-4px] hover:shadow-xl hover:border-sky/40;
   }
 
   .package-card {
-    @apply glass-card rounded-xl p-6 transition-all duration-300 hover:translate-y-[-4px] hover:border-sky/30;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    @apply glass-card rounded-xl p-6 transition-all duration-300 hover:translate-y-[-4px] hover:shadow-xl hover:border-sky/40;
   }
 
-  .form-container {
-    @apply glass-card rounded-xl p-6 md:p-8 w-full max-w-md mx-auto;
-    box-shadow: 0 4px 20px rgba(0, 191, 255, 0.07);
+  .hero-section {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    position: relative;
   }
-  
-  /* Futuristic background components */
-  .futuristic-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
-    overflow: hidden;
-  }
-  
-  .noise-overlay {
+
+  .hero-section::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.05;
-    z-index: 1;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 20%, rgba(0, 191, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+    pointer-events: none;
   }
-  
-  .grid-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-      linear-gradient(rgba(0, 191, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 191, 255, 0.05) 1px, transparent 1px);
-    background-size: 40px 40px;
-    opacity: 0.3;
-    z-index: 1;
+
+  .call-button {
+    @apply inline-flex items-center gap-2 px-4 py-2 bg-sky text-white rounded-lg font-medium hover:bg-sky-dark transition-all duration-200 hover:shadow-lg;
   }
-  
-  .glow-blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(70px);
-    opacity: 0.15;
-    z-index: 0;
-    animation: float 15s ease-in-out infinite;
+
+  .stats-section {
+    @apply bg-gradient-to-r from-sky/5 to-blue-500/5;
   }
-  
-  .glow-blob-1 {
-    width: 400px;
-    height: 400px;
-    background: rgba(0, 191, 255, 0.5);
-    top: -100px;
-    right: -100px;
-    animation-delay: 0s;
-  }
-  
-  .glow-blob-2 {
-    width: 300px;
-    height: 300px;
-    background: rgba(123, 97, 255, 0.5);
-    bottom: -50px;
-    left: 10%;
-    animation-delay: -5s;
-  }
-  
-  .glow-blob-3 {
-    width: 350px;
-    height: 350px;
-    background: rgba(0, 210, 255, 0.4);
-    top: 30%;
-    left: -100px;
-    animation-delay: -10s;
-  }
-  
-  @keyframes float {
-    0% {
-      transform: translate(0px, 0px) scale(1);
-    }
-    33% {
-      transform: translate(30px, -50px) scale(1.05);
-    }
-    66% {
-      transform: translate(-20px, 20px) scale(0.95);
-    }
-    100% {
-      transform: translate(0px, 0px) scale(1);
-    }
-  }
-  
-  .stars {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-  }
-  
-  .star {
-    position: absolute;
-    background-color: white;
-    border-radius: 50%;
-    opacity: 0;
-    animation: twinkle var(--duration) ease-in-out infinite;
-    animation-delay: var(--delay);
-  }
-  
-  @keyframes twinkle {
-    0%, 100% {
-      opacity: 0;
-    }
-    50% {
-      opacity: var(--opacity);
-    }
-  }
-  
-  .neon-line {
-    position: absolute;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(0, 191, 255, 0.5), transparent);
-    animation: neon-sweep 8s linear infinite;
-    z-index: 0;
-  }
-  
-  @keyframes neon-sweep {
-    0% {
-      transform: translateY(-100vh);
-      opacity: 0;
-    }
-    10% {
-      opacity: 1;
-    }
-    90% {
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(100vh);
-      opacity: 0;
-    }
+
+  .packages-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
   }
 }
 

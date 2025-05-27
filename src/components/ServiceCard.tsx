@@ -17,8 +17,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon: Icon, title, descriptio
       <div className="mb-4 w-12 h-12 rounded-lg bg-sky/10 flex items-center justify-center">
         <Icon className="w-6 h-6 text-sky" />
       </div>
-      <h3 className="text-xl font-semibold mb-2 text-white">{title}</h3>
-      <p className="text-white/70">{description}</p>
+      <h3 className="text-xl font-semibold mb-2 text-gray-900">{title}</h3>
+      <p className="text-gray-600">{description}</p>
     </div>
   );
 };
